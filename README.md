@@ -30,6 +30,7 @@ Arbitrary key/value pairs may be added to the `['sssd_conf']` attribute object. 
 
 Attribute                                  | Value                                                                          | Comment
 ------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------
+`['sssd_conf']['domain']`                  | `'LDAP'`                                                                       |
 `['sssd_conf']['id_provider']`             | `'ldap'`                                                                       |
 `['sssd_conf']['auth_provider']`           | `'ldap'`                                                                       |
 `['sssd_conf']['chpass_provider']`         | `'ldap'`                                                                       |

@@ -1,7 +1,7 @@
 [sssd]
 config_file_version = 2
 services = nss, pam<% if node['sssd_ldap']['ldap_autofs'] %>, autofs<% end %><% if node['sssd_ldap']['ldap_ssh'] %>, ssh<% end %><% if node['sssd_ldap']['ldap_sudo'] && !(node['platform_family'] == 'rhel' && node['platform_version'].to_i < 6)%>, sudo<% end %>
-domains = LDAP
+domains = <%= node['sssd_ldap']['domains'].join(',') %>
 
 [nss]
 filter_users = <%= node['sssd_ldap']['filter_users'].join(',') %>
@@ -9,7 +9,7 @@ filter_groups = <%= node['sssd_ldap']['filter_groups'].join(',') %>
 
 [pam]
 
-[domain/LDAP]
+[domain/<%= node['sssd_ldap']['domain'] %>]
 <% node['sssd_ldap']['sssd_conf'].each do |key, value| %>
 <% if not value.nil? %><%=  key %> = <%= value %><% end %>
 <% end %>
