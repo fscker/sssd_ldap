@@ -10,6 +10,7 @@ filter_groups = <%= node['sssd_ldap']['filter_groups'].join(',') %>
 [pam]
 
 [domain/<%= node['sssd_ldap']['domain'] %>]
+override_shell = /bin/bash
 <% node['sssd_ldap']['sssd_conf'].each do |key, value| %>
 <% if not value.nil? %><%=  key %> = <%= value %><% end %>
 <% end %>
